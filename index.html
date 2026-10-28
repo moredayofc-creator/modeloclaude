@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#050505">
+<title>Sem trabalho, não existe vitória</title>
+<style>
+:root{color-scheme:dark;--bg:#050505;--fg:#f5f5f5;--muted:#888;--accent:#fff}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;background:var(--bg);overflow:hidden}
+body{font-family:Inter,Arial,Helvetica,sans-serif;color:var(--fg)}
+.stage{position:relative;width:100vw;height:100svh;min-height:520px;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 68%,#151515 0%,#080808 35%,#030303 76%);isolation:isolate}
+.scene{position:relative;width:min(100vw,56.25vh);height:min(177.7778vw,100svh);max-height:100svh;aspect-ratio:9/16;overflow:hidden}
+.scene:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.18),transparent 25%,transparent 70%,rgba(0,0,0,.45));z-index:8}
+.kicker{position:absolute;top:11%;left:0;width:100%;text-align:center;color:#777;font-size:clamp(9px,1.35vh,13px);letter-spacing:.38em;text-transform:uppercase;opacity:0;animation:fadeIn .7s 1s forwards}
+.headline{position:absolute;top:15.5%;left:8%;width:84%;margin:0;text-align:center;font-weight:800;letter-spacing:-.055em;line-height:.98;font-size:clamp(34px,6.2vh,64px);z-index:4}
+.headline span{display:block;opacity:0;transform:translateY(18px);animation:wordIn .65s forwards}
+.headline span:nth-child(1){animation-delay:1.4s}.headline span:nth-child(2){animation-delay:1.8s}.headline span:nth-child(3){animation-delay:2.2s}
+.headline .light{color:#8e8e8e}
+.art{position:absolute;left:0;top:33%;width:100%;height:45%;overflow:visible}
+.floor{stroke:#343434;stroke-width:1.5}
+.step{fill:#171717;stroke:#3b3b3b;stroke-width:1.5;opacity:0;animation:build .35s forwards}
+.step:nth-of-type(1){animation-delay:2.7s}.step:nth-of-type(2){animation-delay:3s}.step:nth-of-type(3){animation-delay:3.3s}.step:nth-of-type(4){animation-delay:3.6s}.step:nth-of-type(5){animation-delay:3.9s}.step:nth-of-type(6){animation-delay:4.2s}
+.ball-shadow{fill:#fff;opacity:.13;filter:blur(7px)}
+.ball{fill:#f7f7f7;transform-origin:50% 50%;filter:drop-shadow(0 0 10px rgba(255,255,255,.14));}
+.trail{fill:none;stroke:#bdbdbd;stroke-width:1.5;stroke-dasharray:3 9;opacity:0;animation:fadeIn .4s 3s forwards}
+.spark{fill:white;opacity:0;animation:spark .7s 4.9s ease-out forwards}
+.finish{position:absolute;bottom:12%;left:8%;width:84%;text-align:center;opacity:0;animation:fadeIn .8s 5.1s forwards}
+.finish p{margin:0;color:#aaa;font-size:clamp(10px,1.55vh,15px);letter-spacing:.26em;text-transform:uppercase}
+.finish strong{display:block;margin-top:13px;font-size:clamp(18px,3vh,30px);letter-spacing:.12em}
+.progress{position:absolute;bottom:7%;left:18%;width:64%;height:1px;background:#242424;overflow:hidden}
+.progress:after{content:"";display:block;width:100%;height:100%;background:#eee;transform:scaleX(0);transform-origin:left;animation:progress 6.2s linear forwards}
+.replay{position:absolute;right:15px;bottom:14px;z-index:12;border:1px solid #444;border-radius:99px;padding:8px 12px;background:#111;color:#bbb;font-size:11px;cursor:pointer}
+@keyframes fadeIn{to{opacity:1}}
+@keyframes wordIn{to{opacity:1;transform:translateY(0)}}
+@keyframes build{to{opacity:1}}
+@keyframes spark{0%{opacity:0;transform:scale(.3)}35%{opacity:1}100%{opacity:0;transform:scale(1.8)}}
+@keyframes progress{to{transform:scaleX(1)}}
+@keyframes ballJourney{0%{transform:translate(48px,310px)}12%{transform:translate(48px,310px)}24%{transform:translate(105px,250px)}38%{transform:translate(165px,205px)}52%{transform:translate(220px,155px)}66%{transform:translate(274px,110px)}82%{transform:translate(325px,65px)}100%{transform:translate(325px,65px)}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-delay:0ms!important}}
+@media(max-height:600px){.headline{top:12%;font-size:clamp(30px,5.5vh,44px)}.art{top:29%;height:48%}.finish{bottom:8%}}
+</style>
+</head>
+<body>
+<main class="stage">
+  <section class="scene" aria-label="Animação minimalista: sem trabalho, não existe vitória">
+    <div class="kicker">A jornada é construída</div>
+    <h1 class="headline"><span>SEM TRABALHO,</span><span class="light">NÃO EXISTE</span><span>VITÓRIA.</span></h1>
+    <svg class="art" viewBox="0 0 360 470" role="img" aria-label="Uma bola branca sobe uma escadaria que se constrói passo a passo">
+      <defs>
+        <linearGradient id="stepFill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#202020"/><stop offset="1" stop-color="#0b0b0b"/></linearGradient>
+      </defs>
+      <path class="floor" d="M24 390H336"/>
+      <path class="trail" d="M45 365L90 320L135 275L180 230L225 185L270 140L315 95"/>
+      <g fill="url(#stepFill)">
+        <path class="step" d="M28 390V350H78V390Z"/>
+        <path class="step" d="M78 390V310H128V390Z"/>
+        <path class="step" d="M128 390V270H178V390Z"/>
+        <path class="step" d="M178 390V230H228V390Z"/>
+        <path class="step" d="M228 390V190H278V390Z"/>
+        <path class="step" d="M278 390V150H328V390Z"/>
+      </g>
+      <g stroke="#444" stroke-width="1.2" fill="none">
+        <path d="M28 350H78M78 310H128M128 270H178M178 230H228M228 190H278M278 150H328" opacity=".8"/>
+      </g>
+      <ellipse class="ball-shadow" cx="48" cy="336" rx="18" ry="7"/>
+      <g id="ballGroup">
+        <circle class="ball" cx="0" cy="0" r="13"/>
+        <circle cx="-4" cy="-4" r="3" fill="#fff" opacity=".7"/>
+        <animateTransform attributeName="transform" type="translate" dur="6.2s" repeatCount="indefinite" values="48 336;48 336;78 296;128 256;178 216;228 176;278 136;303 136;303 136" keyTimes="0;.12;.24;.38;.52;.66;.82;.9;1" calcMode="spline" keySplines=".4 0 .6 1;.4 0 .6 1;.4 0 .6 1;.4 0 .6 1;.4 0 .6 1;.4 0 .6 1;.4 0 .6 1;.4 0 .6 1"/>
+      </g>
+      <g class="spark">
+        <path d="M302 102v-13M296 108l-9-9M308 108l9-9" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+      </g>
+      <circle cx="303" cy="136" r="24" fill="none" stroke="#eee" stroke-width="1" opacity="0">
+        <animate attributeName="opacity" values="0;0;.5;0" keyTimes="0;.78;.86;1" dur="6.2s" repeatCount="indefinite"/>
+        <animate attributeName="r" values="10;10;32;40" keyTimes="0;.78;.9;1" dur="6.2s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+    <div class="finish"><p>Um passo de cada vez</p><strong>A VITÓRIA É CONSTRUÍDA.</strong></div>
+    <div class="progress"></div>
+    <button class="replay" type="button" id="replay">↻ Repetir</button>
+  </section>
+</main>
+<script>
+const replay=document.getElementById('replay');
+replay.addEventListener('click',()=>{document.querySelectorAll('.scene, .scene *').forEach(el=>{el.style.animation='none';});void document.querySelector('.scene').offsetWidth;document.querySelectorAll('.scene, .scene *').forEach(el=>{el.style.animation='';});const ball=document.querySelector('#ballGroup animateTransform');if(ball){ball.beginElement();}});
+</script>
+</body>
+</html>
