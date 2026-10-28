@@ -23,8 +23,8 @@ body{font-family:Inter,Arial,Helvetica,sans-serif;color:var(--fg)}
 .step{fill:#171717;stroke:#3b3b3b;stroke-width:1.5;opacity:0;animation:build .35s forwards}
 .step:nth-of-type(1){animation-delay:2.7s}.step:nth-of-type(2){animation-delay:3s}.step:nth-of-type(3){animation-delay:3.3s}.step:nth-of-type(4){animation-delay:3.6s}.step:nth-of-type(5){animation-delay:3.9s}.step:nth-of-type(6){animation-delay:4.2s}
 .ball-shadow{fill:#fff;opacity:.13;filter:blur(7px)}
-.ball{fill:#f7f7f7;transform-origin:50% 50%;filter:drop-shadow(0 0 10px rgba(255,255,255,.14));}
-.trail{fill:none;stroke:#bdbdbd;stroke-width:1.5;stroke-dasharray:3 9;opacity:0;animation:fadeIn .4s 3s forwards}
+.ball{fill:#f7f7f7;transform-origin:50% 50%;filter:drop-shadow(0 0 10px rgba(255,255,255,.14));}\n.ball-halo{fill:none;stroke:#fff;stroke-width:1;opacity:.16;transform-box:fill-box;transform-origin:center;animation:haloPulse 1.8s ease-in-out infinite}
+.trail{fill:none;stroke:#bdbdbd;stroke-width:1.5;stroke-dasharray:3 9;stroke-dashoffset:220;opacity:0;animation:trailDraw 3.2s 2.8s ease-out forwards}
 .spark{fill:white;opacity:0;animation:spark .7s 4.9s ease-out forwards}
 .finish{position:absolute;bottom:12%;left:8%;width:84%;text-align:center;opacity:0;animation:fadeIn .8s 5.1s forwards}
 .finish p{margin:0;color:#aaa;font-size:clamp(10px,1.55vh,15px);letter-spacing:.26em;text-transform:uppercase}
@@ -32,7 +32,7 @@ body{font-family:Inter,Arial,Helvetica,sans-serif;color:var(--fg)}
 .progress{position:absolute;bottom:7%;left:18%;width:64%;height:1px;background:#242424;overflow:hidden}
 .progress:after{content:"";display:block;width:100%;height:100%;background:#eee;transform:scaleX(0);transform-origin:left;animation:progress 6.2s linear forwards}
 .replay{position:absolute;right:15px;bottom:14px;z-index:12;border:1px solid #444;border-radius:99px;padding:8px 12px;background:#111;color:#bbb;font-size:11px;cursor:pointer}
-@keyframes fadeIn{to{opacity:1}}
+@keyframes fadeIn{to{opacity:1}}\n@keyframes trailDraw{0%{opacity:0;stroke-dashoffset:220}15%{opacity:.55}100%{opacity:.45;stroke-dashoffset:0}}\n@keyframes haloPulse{0%,100%{transform:scale(.85);opacity:.08}50%{transform:scale(1.35);opacity:.32}}
 @keyframes wordIn{to{opacity:1;transform:translateY(0)}}
 @keyframes build{to{opacity:1}}
 @keyframes spark{0%{opacity:0;transform:scale(.3)}35%{opacity:1}100%{opacity:0;transform:scale(1.8)}}
@@ -45,7 +45,7 @@ body{font-family:Inter,Arial,Helvetica,sans-serif;color:var(--fg)}
 <body>
 <main class="stage">
   <section class="scene" aria-label="Animação minimalista: sem trabalho, não existe vitória">
-    <div class="kicker">A jornada é construída</div>
+    <div class="kicker">A jornada é construída</div>\n    <div style="position:absolute;top:27.5%;left:0;width:100%;text-align:center;color:#777;font-size:clamp(9px,1.2vh,12px);letter-spacing:.24em;text-transform:uppercase;opacity:0;animation:fadeIn .7s 2.6s forwards">Cada passo exige esforço</div>
     <h1 class="headline"><span>SEM TRABALHO,</span><span class="light">NÃO EXISTE</span><span>VITÓRIA.</span></h1>
     <svg class="art" viewBox="0 0 360 470" role="img" aria-label="Uma bola branca sobe uma escadaria que se constrói passo a passo">
       <defs>
@@ -66,7 +66,7 @@ body{font-family:Inter,Arial,Helvetica,sans-serif;color:var(--fg)}
       </g>
       <ellipse class="ball-shadow" cx="48" cy="336" rx="18" ry="7"/>
       <g id="ballGroup">
-        <circle class="ball" cx="0" cy="0" r="13"/>
+        <circle class="ball-halo" cx="0" cy="0" r="19"/>\n        <circle class="ball" cx="0" cy="0" r="13"/>
         <circle cx="-4" cy="-4" r="3" fill="#fff" opacity=".7"/>
         <animateTransform attributeName="transform" type="translate" dur="6.2s" repeatCount="indefinite" values="48 336;48 336;78 296;128 256;178 216;228 176;278 136;303 136;303 136" keyTimes="0;.12;.24;.38;.52;.66;.82;.9;1" calcMode="spline" keySplines=".4 0 .6 1;.4 0 .6 1;.4 0 .6 1;.4 0 .6 1;.4 0 .6 1;.4 0 .6 1;.4 0 .6 1;.4 0 .6 1"/>
       </g>
