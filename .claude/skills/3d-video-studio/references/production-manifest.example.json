@@ -1,0 +1,34 @@
+{
+  "project": {
+    "title": "Exemplo de vídeo educativo",
+    "language": "pt-BR",
+    "duration_seconds": 60,
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "audio_sample_rate": 48000
+  },
+  "visual_bible": {
+    "style": "educational-3d",
+    "palette": ["#102A43", "#2F80ED", "#F2C14E", "#F5F7FA"],
+    "lighting": "cinematic-soft-key-fill-rim",
+    "character_id": "presenter-main",
+    "continuity_notes": "Manter design, roupa, escala e materiais em todas as cenas."
+  },
+  "scenes": [
+    {
+      "id": "scene-01",
+      "start": 0,
+      "end": 5,
+      "duration": 5,
+      "learning_goal": "Apresentar a pergunta central.",
+      "visual_action": "O personagem aponta para o objeto principal.",
+      "camera": "medium-shot-slow-push-in",
+      "voiceover": "Texto exato da narração nesta cena.",
+      "on_screen_text": "A PERGUNTA",
+      "sfx": [],
+      "assets": ["presenter-main", "main-prop"],
+      "transition_out": "cut"
+    }
+  ]
+}
